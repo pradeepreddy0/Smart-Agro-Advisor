@@ -1,0 +1,27 @@
+.recommendation-card {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--primary-color);
+  }
+  
+  .recommendation-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .recommendation-crop {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin: 1rem 0;
+  }
+  
+  .recommendation-description {
+    color: var(--text-light);
+    font-size: 0.875rem;
+  }

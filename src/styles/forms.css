@@ -1,0 +1,66 @@
+.form-group {
+    margin-bottom: 1.5rem;
+    /* margin-top: 1.5rem; */
+  }
+  
+  .form-label {
+    display: block;
+    font-size: 0.975rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-input {
+    width: 90%;
+    padding: 0.75rem;
+    border: 1px solid #12b322;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(47, 82, 51, 0.1);
+  }
+  
+  .form-grid {
+    display: grid;
+    gap: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .form-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  .form-grid .full-width {
+    grid-column: 1 / -1;
+  }
+
+  .back-button-box {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: #2F5233; /* Light gray background */
+    border: 1px solid #ddd; /* Border for the box */
+    border-radius: 0.5rem; /* Rounded corners */
+    padding: 0.5rem 1rem; /* Padding for spacing */
+    color: #fff; /* Text color */
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+  }
+  
+  .back-button-box:hover {
+    background-color: #910e0e; /* Change background color on hover */
+    color: #333; /* Change text color on hover */
+  }
+  
+  
