@@ -1,71 +1,191 @@
-# Getting Started with Create React App
+# SmartAgro: Intelligent Agriculture Solutions
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
+SmartAgro is a comprehensive solution designed to assist farmers in making informed decisions regarding crop and fertilizer recommendations. By leveraging machine learning models and a user-friendly API, SmartAgro provides data-driven insights to optimize agricultural practices.
 
-## Available Scripts 
+## Features
 
-In the project directory, you can run:
+-   **User Authentication:** Secure user registration and login functionality using Flask-Bcrypt and JWT.
+-   **Crop Recommendation:** Recommends the most suitable crop based on environmental factors and soil conditions.
+-   **Fertilizer Recommendation:** Suggests the optimal fertilizer type based on soil and crop characteristics.
+-   **API Endpoints:**
+    -   `/register`: Registers a new user.
+    -   `/login`: Authenticates an existing user and returns a JWT token.
+    -   `/recommend`: Provides crop recommendations based on input parameters.
+    -   `/predict`: Provides fertilizer recommendations based on input parameters.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+-   **Flask:** A micro web framework for building the API.
+-   **Flask-PyMongo:** Integrates MongoDB with Flask for database operations.
+-   **Flask-Bcrypt:** Used for password hashing and security.
+-   **Flask-JWT-Extended:** Provides JWT authentication for API security.
+-   **Flask-CORS:** Enables Cross-Origin Resource Sharing (CORS) for the API.
+-   **Pandas:** Used for data manipulation and analysis.
+-   **Pickle:** Used for serializing and deserializing machine learning models.
+-   **MongoDB:** A NoSQL database to store user information.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Machine Learning Models
 
-### `npm test`
+### Crop Recommendation Model
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-   **Model Type:** The specific type of model used for crop recommendation (e.g., Random Forest, Support Vector Machine) should be specified here.
+-   **Features Used:** N, P, K, Temperature, Humidity, pH, Rainfall
+-   **Accuracy:** \[Insert Accuracy Percentage]% (This is an estimated value.  You need to measure the accuracy of your model using a validation dataset.)
+-   **Description:** This model predicts the most suitable crop to grow based on the provided environmental and soil conditions.
 
-### `npm run build`
+### Fertilizer Recommendation Model
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-   **Model Type:** The specific type of model used for fertilizer recommendation (e.g., Random Forest, Support Vector Machine) should be specified here.
+-   **Features Used:** Temperature, Humidity, Moisture, Soil\_Type, Crop\_Type, Nitrogen, Potassium, Phosphorous
+-   **Accuracy:** \[Insert Accuracy Percentage]% (This is an estimated value. You need to measure the accuracy of your model using a validation dataset.)
+-   **Description:** This model predicts the optimal fertilizer type based on soil composition, environmental conditions, and the type of crop being grown.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+*Note: The accuracy values provided above are placeholders. You will need to evaluate your models on a held-out test set to determine their actual performance.*
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Setup and Installation
 
-### `npm run eject`
+1.  **Clone the Repository:**
 
-**Note: This is a one-way operation. Once you `eject`, you can't go back!**
+    ```
+    git clone [repository-url]
+    cd [repository-directory]
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2.  **Install Dependencies:**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    ```
+    pip install flask flask_pymongo flask_bcrypt flask_jwt_extended flask_cors pandas scikit-learn
+    ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3.  **Set up MongoDB:**
 
-## Learn More
+    -   Ensure MongoDB is installed and running on your local machine.
+    -   Update the MongoDB URI in `app.py` if necessary.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    ```
+    app.config['MONGO_URI'] = 'mongodb://localhost:27017/AgricultureDB'
+    ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4.  **Load Machine Learning Models:**
 
-### Code Splitting
+    -   Place the `crop_recommendation_model.pkl` and `fertilizer_recommendation_model.pkl` and `fertilizer.pkl` files in the same directory as `app.py`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+5.  **Run the Application:**
 
-### Analyzing the Bundle Size
+    ```
+    python app.py
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    The API will start running on `http://localhost:5000`.
 
-### Making a Progressive Web App
+## API Endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 1. Register
 
-### Advanced Configuration
+-   **Endpoint:** `/register`
+-   **Method:** POST
+-   **Request Body:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    ```
+    {
+      "email": "user@example.com",
+      "password": "secure_password"
+    }
+    ```
 
-### Deployment
+-   **Response:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+    ```
+    {
+      "message": "User registered successfully"
+    }
+    ```
 
-### `npm run build` fails to minify
+### 2. Login
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   **Endpoint:** `/login`
+-   **Method:** POST
+-   **Request Body:**
+
+    ```
+    {
+      "email": "user@example.com",
+      "password": "secure_password"
+    }
+    ```
+
+-   **Response (Success):**
+
+    ```
+    {
+      "token": "JWT access token"
+    }
+    ```
+
+-   **Response (Failure):**
+
+    ```
+    {
+      "message": "Invalid credentials"
+    }
+    ```
+
+### 3. Crop Recommendation
+
+-   **Endpoint:** `/recommend`
+-   **Method:** POST
+-   **Request Body:**
+
+    ```
+    {
+      "N": 50,
+      "P": 50,
+      "K": 50,
+      "Temperature": 25.0,
+      "Humidity": 70.0,
+      "ph": 6.0,
+      "Rainfall": 100.0
+    }
+    ```
+
+-   **Response:**
+
+    ```
+    {
+      "recommendation": "crop_name"
+    }
+    ```
+
+### 4. Fertilizer Recommendation
+
+-   **Endpoint:** `/predict`
+-   **Method:**  POST
+-   **Request Body:**
+
+    ```
+    {
+      "Temperature": 20,
+      "Humidity": 83,
+      "Moisture": 26,
+      "Soil_Type": "Clayey",
+      "Crop_Type": "rice",
+      "Nitrogen": 90,
+      "Potassium": 49,
+      "Phosphorous": 36
+    }
+    ```
+
+-   **Response:**
+
+    ```
+    {
+      "recommendation": "Urea"
+    }
+    ```
+
+## CORS Configuration
+
+CORS is enabled for all routes by default. To restrict CORS to specific origins, modify the `CORS` configuration in `app.py`.
+
